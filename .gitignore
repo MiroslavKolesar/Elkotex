@@ -1,0 +1,16 @@
+# Binary files
+*.app
+
+# Temp & Config files
+.alcache/
+.altemplates/
+.altestrunner/
+.worktrees/
+.snapshots/
+launch.json
+rad.json
+
+# Others
+~$*
+*~
+*.g.xlf
