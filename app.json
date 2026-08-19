@@ -1,8 +1,8 @@
 {
-  "id": "cef1a33e-8e83-45ed-aae7-82df8710317f",
+  "id": "fa0996f2-6714-4fde-ab3f-2a1381fbbef7",
   "name": "Elkotex Seyfor",
   "publisher": "Seyfor, a.s.",
-  "version": "1.0.0.1",
+  "version": "25.0.0.1",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -12,10 +12,10 @@
   "logo": "",
   "dependencies": [
         {
-      "name": "Tasklet Mobile WMS",
-      "id": "a5727ce6-368c-49e2-84cb-1a6052f0551c",
-      "version": "5.53.0.0",
-      "publisher": "Tasklet Factory"
+          "name": "Tasklet Mobile WMS",
+          "id": "a5727ce6-368c-49e2-84cb-1a6052f0551c",
+          "version": "5.53.0.0",
+          "publisher": "Tasklet Factory"
         }
       ],
   "screenshots": [],
@@ -23,8 +23,8 @@
   "application": "25.0.0.0",
   "idRanges": [
     {
-      "from": 72050,
-      "to": 72100
+      "from": 72500,
+      "to": 73000
     }
   ],
   "resourceExposurePolicy": {

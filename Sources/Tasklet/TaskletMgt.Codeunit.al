@@ -1,4 +1,4 @@
-codeunit 72050 "Tasklet Mgt."
+codeunit 72500 "Tasklet Mgt."
 {
     //CDR-2026-1193
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"MOB Item Reference Mgt.", 'OnBeforeSearchItemReference', '', true, true)]
