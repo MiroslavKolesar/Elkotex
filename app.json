@@ -2,7 +2,7 @@
   "id": "fa0996f2-6714-4fde-ab3f-2a1381fbbef7",
   "name": "Elkotex Seyfor",
   "publisher": "Seyfor, a.s.",
-  "version": "25.0.0.1",
+  "version": "25.3.0.0",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -16,6 +16,12 @@
           "id": "a5727ce6-368c-49e2-84cb-1a6052f0551c",
           "version": "5.53.0.0",
           "publisher": "Tasklet Factory"
+        },
+        {
+          "name": "RCLInt_Elko_Customization",
+          "id": "b073f698-a178-4c1d-9a78-1e37539fe850",
+          "version": "25.0.0.0",
+          "publisher": "RCL Int"
         }
       ],
   "screenshots": [],
@@ -33,7 +39,7 @@
     "includeSourceInSymbolFile": false
   },
   "runtime": "14.3",
-  "target": "OnPrem",
+  "target": "Cloud",
 "features": [
         "TranslationFile",
         "GenerateCaptions"

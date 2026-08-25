@@ -29,4 +29,22 @@ codeunit 72500 "Tasklet Mgt."
             _IsHandled := true;
         end;
     end;
+
+    //CDR-2026-1197
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"MOB WMS Receive", 'OnGetReceiveOrderLines_OnAfterSetFromWarehouseReceiptLine', '', true, true)]
+    local procedure OnGetReceiveOrderLines_OnAfterSetFromWarehouseReceiptLine(_WhseReceiptLine: Record "Warehouse Receipt Line"; var _BaseOrderLineElement: Record "MOB NS BaseDataModel Element")
+    var
+        Item2: Record Item;
+        ElementText: Text;
+    begin
+        if not Item2.Get(_WhseReceiptLine."Item No.") then
+            exit;
+
+        if Format(Item2."Expiration Calculation-RclBm") <> '' then
+            ElementText := Item2.FieldCaption("Expiration Calculation-RclBm") + ': ' + Format(Item2."Expiration Calculation-RclBm");
+        if Format(Item2."Expiration Calc. HR-RclBm") <> '' then
+            ElementText := Item2.FieldCaption("Expiration Calc. HR-RclBm") + ': ' + Format(Item2."Expiration Calc. HR-RclBm");
+        _BaseOrderLineElement.Set_DisplayLine4(ElementText);
+    end;
+
 }
