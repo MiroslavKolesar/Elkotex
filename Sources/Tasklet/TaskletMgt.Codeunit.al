@@ -37,14 +37,29 @@ codeunit 72500 "Tasklet Mgt."
         Item2: Record Item;
         ElementText: Text;
     begin
+        Item2.SetLoadFields("Expiration Calculation-RclBm");
         if not Item2.Get(_WhseReceiptLine."Item No.") then
             exit;
-
         if Format(Item2."Expiration Calculation-RclBm") <> '' then
             ElementText := Item2.FieldCaption("Expiration Calculation-RclBm") + ': ' + Format(Item2."Expiration Calculation-RclBm");
-        if Format(Item2."Expiration Calc. HR-RclBm") <> '' then
-            ElementText := Item2.FieldCaption("Expiration Calc. HR-RclBm") + ': ' + Format(Item2."Expiration Calc. HR-RclBm");
-        _BaseOrderLineElement.Set_DisplayLine4(ElementText);
+        //if Format(Item2."Expiration Calc. HR-RclBm") <> '' then
+        //    ElementText := Item2.FieldCaption("Expiration Calc. HR-RclBm") + ': ' + Format(Item2."Expiration Calc. HR-RclBm");
+        if ElementText <> '' then
+            _BaseOrderLineElement.Set_DisplayLine4(ElementText);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"MOB WMS Lookup", 'OnLookupOnLocateItem_OnAfterSetFromBinContent', '', false, false)]
+    local procedure MobWmsLookupOnLookupOnLocateItemOnAfterSetFromBinContent(_BinContent: Record "Bin Content"; var _LookupResponseElement: Record "MOB NS WhseInquery Element")
+    var
+        Item2: Record Item;
+        ElementText: Text;
+    begin
+        Item2.SetLoadFields("Expiration Calculation-RclBm");
+        if not Item2.Get(_BinContent."Item No.") then
+            exit;
+        if Format(Item2."Expiration Calculation-RclBm") <> '' then
+            ElementText := Item2.FieldCaption("Expiration Calculation-RclBm") + ': ' + Format(Item2."Expiration Calculation-RclBm");
+        if ElementText <> '' then
+            _LookupResponseElement.Set_DisplayLine4(ElementText);
+    end;
 }
