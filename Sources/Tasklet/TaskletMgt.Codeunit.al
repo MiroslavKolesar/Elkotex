@@ -62,4 +62,26 @@ codeunit 72500 "Tasklet Mgt."
         if ElementText <> '' then
             _LookupResponseElement.Set_DisplayLine4(ElementText);
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"MOB WMS Pick", OnGetPickOrderLines_OnAddStepsToAnyLine, '', false, false)]
+    local procedure MobWmsPickOnGetPickOrderLinesOnAddStepsToAnyLine(var _BaseOrderLineElement: Record "MOB NS BaseDataModel Element"; var _Steps: Record "MOB Steps Element")
+    var
+        ItemNo: Code[20];
+        ItemBarcodes: Text;
+        ValidationValues: Text;
+    begin
+        if _BaseOrderLineElement.Get_RegisterSerialNumber() <> 'true' then
+            exit;
+
+        ItemNo := CopyStr(_BaseOrderLineElement.Get_ItemNumber(), 1, MaxStrLen(ItemNo));
+        ItemBarcodes := _BaseOrderLineElement.Get_ItemBarcode();
+        ValidationValues := ItemNo;
+        if ItemBarcodes <> '' then
+            ValidationValues += ';' + ItemBarcodes;
+
+        _Steps.Create_TextStep_Barcode(39, ItemNo);
+        _Steps.Set_validationValues(ValidationValues);
+        _Steps.Set_validationCaseSensitive(false);
+        _BaseOrderLineElement.Set_RewindToStepOnIncompleteLine(_Steps.Get_name());
+    end;
 }
