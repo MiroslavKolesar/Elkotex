@@ -41,9 +41,7 @@ codeunit 72500 "Tasklet Mgt."
         if not Item2.Get(_WhseReceiptLine."Item No.") then
             exit;
         if Format(Item2."Expiration Calculation-RclBm") <> '' then
-            ElementText := Item2.FieldCaption("Expiration Calculation-RclBm") + ': ' + Format(Item2."Expiration Calculation-RclBm");
-        //if Format(Item2."Expiration Calc. HR-RclBm") <> '' then
-        //    ElementText := Item2.FieldCaption("Expiration Calc. HR-RclBm") + ': ' + Format(Item2."Expiration Calc. HR-RclBm");
+            ElementText := Format(Item2."Expiration Calculation-RclBm");
         if ElementText <> '' then
             _BaseOrderLineElement.Set_DisplayLine4(ElementText);
     end;
@@ -58,7 +56,7 @@ codeunit 72500 "Tasklet Mgt."
         if not Item2.Get(_BinContent."Item No.") then
             exit;
         if Format(Item2."Expiration Calculation-RclBm") <> '' then
-            ElementText := Item2.FieldCaption("Expiration Calculation-RclBm") + ': ' + Format(Item2."Expiration Calculation-RclBm");
+            ElementText := Format(Item2."Expiration Calculation-RclBm");
         if ElementText <> '' then
             _LookupResponseElement.Set_DisplayLine4(ElementText);
     end;
@@ -70,6 +68,8 @@ codeunit 72500 "Tasklet Mgt."
         ItemBarcodes: Text;
         ValidationValues: Text;
     begin
+        exit;
+
         if _BaseOrderLineElement.Get_RegisterSerialNumber() <> 'true' then
             exit;
 
