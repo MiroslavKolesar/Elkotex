@@ -1,8 +1,10 @@
 {
     "workbench.colorCustomizations": {
-      "statusBar.background" : "#F4D03F",
-      "statusBar.noFolderBackground" : "#222225",
-      "statusBar.debuggingBackground": "#511f1f"
+      "statusBar.background": "#146B4D",
+      "statusBar.foreground": "#FFFFFF",
+      "statusBar.noFolderBackground": "#146B4D",
+      "statusBar.debuggingBackground": "#0B2D5C",
+      "statusBar.debuggingForeground": "#FFFFFF"
     },
     "git.ignoreLimitWarning": true
 }
